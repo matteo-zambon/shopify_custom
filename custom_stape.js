@@ -153,6 +153,7 @@ function parseItems(event) {
         item_brand: lineItem.variant.product.vendor,
         item_url: lineItem.variant.product?.url,
         price: lineItem.variant.price.amount,
+        compare_at_price: 'lineItem.variant.price.amount',
         imageURL: lineItem?.variant?.image?.src,
         discount: lineItem.discountAllocations[0]?.amount?.amount || null,
         quantity: lineItem.quantity,
@@ -190,6 +191,7 @@ function parseItems(event) {
       'item_brand': event.data.cartLine.merchandise.product.vendor,
       'item_url': event.data.cartLine.merchandise.product?.url,
       'price': event.data.cartLine.merchandise.price.amount,
+      'compare_at_price': 'event.data.cartLine.merchandise.price.amount',
       'imageURL': event.data.cartLine.merchandise?.image?.src,
       'quantity': event.data.cartLine.quantity
     });
@@ -204,7 +206,7 @@ function parseItems(event) {
       'variant_name': event.data.productVariant.title,      
       'item_category': event.data.productVariant.product.type,
       'price': event.data.productVariant.price.amount,
-      'compare_at_price': event.data.productVariant.product.compare_at_price,
+      'compare_at_price': 'event.data.productVariant.product.compare_at_price',
       'item_brand': event.data.productVariant.product.vendor,
       'imageURL': event.data.productVariant?.image?.src,
       'item_url': event.data.productVariant?.product?.url,
@@ -226,6 +228,7 @@ function parseItems(event) {
         item_category: variant.product.type,
         item_brand: variant.product.vendor,
         price: variant.price.amount,
+        compare_at_price: 'collection.variant.price.amount',
         imageURL: variant?.image?.src,
         item_url: variant?.product?.url,
         index: i + 1,
@@ -247,6 +250,7 @@ function parseItems(event) {
         item_category: variant.product.type,
         item_brand: variant.product.vendor,
         price: variant.price.amount,
+        compare_at_price: 'searchResult.variant.price.amount',
         imageURL: variant?.image?.src,
         item_url: variant?.product?.url,
         index: i + 1,
@@ -267,6 +271,7 @@ function parseItems(event) {
         item_brand: line.merchandise.product.vendor,
         item_url: line.merchandise?.product?.url,
         price: line.merchandise.price.amount,
+        compare_at_price: 'line.merchandise.price.amount',
         imageURL: line.merchandise?.image?.src,
         quantity: line.quantity,
         index: i + 1,
@@ -353,6 +358,7 @@ function getCart(cart = {}) {
         quantity:        _i.quantity,
         line_total_price:  _i.cost.totalAmount.amount,
         price:  _i.merchandise.price.amount,
+        compare_at_price:  '_i.merchandise.price.amount',
       }))
 
     }
@@ -399,4 +405,5 @@ function parseUserData(event) {
    userData.shopify_client_id = event?.clientId;
 
   return userData;
+
 }

@@ -210,7 +210,7 @@ function parseItems(event) {
       'item_brand': event.data.productVariant.product.vendor,
       'imageURL': event.data.productVariant?.image?.src,
       'item_url': event.data.productVariant?.product?.url,
-      'quantity': '1'
+      'quantity': '2'
     });
     console.log(items);
   }
@@ -407,3 +407,4 @@ function parseUserData(event) {
   return userData;
 
 }
+
